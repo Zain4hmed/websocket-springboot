@@ -1,3 +1,5 @@
+// WebSocketConfig.java
+
 package com.zainahme.chat.config;
 
 import org.springframework.context.annotation.Configuration;
