@@ -19,7 +19,6 @@ public class WebSocketEventListener {
 
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
-        log.info("Inside WebsocketEventListener method : handleWebsocketdisconnectlistener");
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
         String username = (String) headerAccessor.getSessionAttributes().get("username");
         if (username != null) {
@@ -29,8 +28,6 @@ public class WebSocketEventListener {
                     .sender(username)
                     .build();
             messagingTemplate.convertAndSend("/topic/public", chatMessage);
-            log.info("Inside WebsocketEventListener method : handleWebsocketdisconnectlistener and the chatMessage is :{}",chatMessage);
-
         }
     }
 

@@ -23,13 +23,14 @@ function connect(event) {
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
 
-        var socket = new WebSocket('wss://websocket-springboot-production.up.railway.app/ws');
+        var socket = new SockJS('/ws');
         stompClient = Stomp.over(socket);
 
         stompClient.connect({}, onConnected, onError);
     }
     event.preventDefault();
 }
+
 
 function onConnected() {
     // Subscribe to the Public Topic
@@ -44,10 +45,12 @@ function onConnected() {
     connectingElement.classList.add('hidden');
 }
 
+
 function onError(error) {
     connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
     connectingElement.style.color = 'red';
 }
+
 
 function sendMessage(event) {
     var messageContent = messageInput.value.trim();
@@ -62,6 +65,7 @@ function sendMessage(event) {
     }
     event.preventDefault();
 }
+
 
 function onMessageReceived(payload) {
     var message = JSON.parse(payload.body);
@@ -99,6 +103,7 @@ function onMessageReceived(payload) {
     messageArea.appendChild(messageElement);
     messageArea.scrollTop = messageArea.scrollHeight;
 }
+
 
 function getAvatarColor(messageSender) {
     var hash = 0;
