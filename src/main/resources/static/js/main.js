@@ -23,8 +23,7 @@ function connect(event) {
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
 
-        // Update the WebSocket endpoint URL to match your deployment environment
-        var socket = new SockJS('https://websocket-springboot-production.up.railway.app/ws');
+        var socket = new WebSocket('wss://websocket-springboot-production.up.railway.app/ws');
         stompClient = Stomp.over(socket);
 
         stompClient.connect({}, onConnected, onError);
@@ -40,7 +39,7 @@ function onConnected() {
     stompClient.send("/app/chat.addUser",
         {},
         JSON.stringify({sender: username, type: 'JOIN'})
-    );
+    )
 
     connectingElement.classList.add('hidden');
 }
@@ -110,5 +109,5 @@ function getAvatarColor(messageSender) {
     return colors[index];
 }
 
-usernameForm.addEventListener('submit', connect, true);
-messageForm.addEventListener('submit', sendMessage, true);
+usernameForm.addEventListener('submit', connect, true)
+messageForm.addEventListener('submit', sendMessage, true)
