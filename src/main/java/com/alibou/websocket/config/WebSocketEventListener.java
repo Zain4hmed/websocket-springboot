@@ -1,7 +1,7 @@
-package com.zainahme.chat.config;
+package com.alibou.websocket.config;
 
-import com.zainahme.chat.chat.ChatMessage;
-import com.zainahme.chat.chat.MessageType;
+import com.alibou.websocket.chat.ChatMessage;
+import com.alibou.websocket.chat.MessageType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
@@ -11,25 +11,23 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
 @Component
-@RequiredArgsConstructor
 @Slf4j
-public class WebSocketEventListner {
+@RequiredArgsConstructor
+public class WebSocketEventListener {
 
-    private final SimpMessageSendingOperations messageSendingOperations;
+    private final SimpMessageSendingOperations messagingTemplate;
+
     @EventListener
-    public void HandleWebSocketDisconnectListener( SessionDisconnectEvent event ){
-
+    public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
         String username = (String) headerAccessor.getSessionAttributes().get("username");
-
-        if(username != null){
-            log.info("User disconnected : {}",username);
+        if (username != null) {
+            log.info("user disconnected: {}", username);
             var chatMessage = ChatMessage.builder()
                     .type(MessageType.LEAVE)
                     .sender(username)
                     .build();
-
-            messageSendingOperations.convertAndSend("/topic/public",chatMessage);
+            messagingTemplate.convertAndSend("/topic/public", chatMessage);
         }
     }
 

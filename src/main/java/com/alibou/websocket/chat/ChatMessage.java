@@ -1,4 +1,4 @@
-package com.zainahme.chat.chat;
+package com.alibou.websocket.chat;
 
 import lombok.*;
 
@@ -8,7 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class ChatMessage {
+
+    private MessageType type;
     private String content;
     private String sender;
-    private MessageType type;
+
 }

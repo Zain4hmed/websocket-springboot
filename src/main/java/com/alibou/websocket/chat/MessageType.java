@@ -1,7 +1,8 @@
-package com.zainahme.chat.chat;
+package com.alibou.websocket.chat;
 
 public enum MessageType {
+
     CHAT,
-    JOINE,
+    JOIN,
     LEAVE
 }
