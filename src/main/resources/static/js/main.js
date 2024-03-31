@@ -24,7 +24,7 @@ function connect(event) {
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
 
-        var socket = new SockJS('wss://websocket-springboot-production.up.railway.app/ws');
+        var socket = new SockJS('wss://websocket-springboot-production.up.railway.app/');
         stompClient = Stomp.over(socket);
 
         stompClient.connect({}, onConnected, onError);
