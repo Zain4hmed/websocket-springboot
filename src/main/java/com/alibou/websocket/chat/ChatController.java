@@ -5,8 +5,10 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
+@Slf4j
 public class ChatController {
 
     @MessageMapping("/chat.sendMessage")
@@ -14,6 +16,7 @@ public class ChatController {
     public ChatMessage sendMessage(
             @Payload ChatMessage chatMessage
     ) {
+        log.info("Message received: {}", chatMessage);
         return chatMessage;
     }
 
@@ -24,7 +27,9 @@ public class ChatController {
             SimpMessageHeaderAccessor headerAccessor
     ) {
         // Add username in web socket session
-        headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
+        String username = chatMessage.getSender();
+        headerAccessor.getSessionAttributes().put("username", username);
+        log.info("User added: {}", username);
         return chatMessage;
     }
 }
