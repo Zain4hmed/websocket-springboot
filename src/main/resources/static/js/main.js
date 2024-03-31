@@ -20,6 +20,7 @@ function connect(event) {
     username = document.querySelector('#name').value.trim();
 
     if(username) {
+        console.log('Connecting to WebSocket server...');
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
 
@@ -31,44 +32,48 @@ function connect(event) {
     event.preventDefault();
 }
 
-
 function onConnected() {
+    console.log('Connected to WebSocket server.');
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
+    console.log('Subscribed to /topic/public');
 
     // Tell your username to the server
+    console.log('Sending username to server...');
     stompClient.send("/app/chat.addUser",
         {},
         JSON.stringify({sender: username, type: 'JOIN'})
-    )
+    );
+    console.log('Username sent: ' + username);
 
     connectingElement.classList.add('hidden');
 }
 
-
 function onError(error) {
+    console.error('WebSocket connection error:', error);
     connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
     connectingElement.style.color = 'red';
 }
 
-
 function sendMessage(event) {
     var messageContent = messageInput.value.trim();
     if(messageContent && stompClient) {
+        console.log('Sending message:', messageContent);
         var chatMessage = {
             sender: username,
             content: messageInput.value,
             type: 'CHAT'
         };
         stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
+        console.log('Message sent:', chatMessage);
         messageInput.value = '';
     }
     event.preventDefault();
 }
 
-
 function onMessageReceived(payload) {
     var message = JSON.parse(payload.body);
+    console.log('Message received:', message);
 
     var messageElement = document.createElement('li');
 
@@ -104,7 +109,6 @@ function onMessageReceived(payload) {
     messageArea.scrollTop = messageArea.scrollHeight;
 }
 
-
 function getAvatarColor(messageSender) {
     var hash = 0;
     for (var i = 0; i < messageSender.length; i++) {
@@ -114,5 +118,6 @@ function getAvatarColor(messageSender) {
     return colors[index];
 }
 
+console.log('Adding event listeners...');
 usernameForm.addEventListener('submit', connect, true)
-messageForm.addEventListener('submit', sendMessage, true)
+messageForm.addEventListener('submit', sendMessage, true);
