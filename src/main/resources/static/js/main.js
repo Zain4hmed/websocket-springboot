@@ -24,7 +24,7 @@ function connect(event) {
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
 
-        var socket = new SockJS('wss://websocket-springboot-production.up.railway.app/');
+        var socket = new SockJS('ws://websocket-springboot-production.up.railway.app/');
         stompClient = Stomp.over(socket);
 
         stompClient.connect({}, onConnected, onError);
@@ -32,7 +32,7 @@ function connect(event) {
     event.preventDefault();
 }
 
-function onConnected() {
+function onConnected() {    
     console.log('Connected to WebSocket server.');
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
