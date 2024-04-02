@@ -4,8 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Spring Boot WebSocket Chat Application</title>
     <link rel="stylesheet" href="/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="font-family: 'JetBrains Mono';">
 <noscript>
     <h2>Sorry! Your browser doesn't support Javascript</h2>
 </noscript>
@@ -15,10 +18,10 @@
         <h1 class="title">Type your username to enter the Chatroom</h1>
         <form id="usernameForm" name="usernameForm">
             <div class="form-group">
-                <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
+                <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" style="border-radius: 5px;" />
             </div>
             <div class="form-group">
-                <button type="submit" class="accent username-submit">Start Chatting</button>
+                <button type="submit" class="accent username-submit" style="background-color: royalblue; border-radius: 5px;" >Start Chatting</button>
             </div>
         </form>
     </div>
@@ -38,8 +41,8 @@
         <form id="messageForm" name="messageForm">
             <div class="form-group">
                 <div class="input-group clearfix">
-                    <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
-                    <button type="submit" class="primary">Send</button>
+                    <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control" style="border-radius: 5px;"/>
+                    <button type="submit" class="primary" style="background-color: royalblue; border-radius: 5px;">Send</button>
                 </div>
             </div>
         </form>
