@@ -1,7 +1,3 @@
-Got it, let's move the URLs to a more prominent location, perhaps right after the "How to Contribute" section. Here's the updated version:
-
----
-
 # Websocket Chat Room Application
 
 This is a basic WebSocket chat room application developed by Zain Ahmed, aimed at providing a simple and universally accessible platform for real-time communication over the web. The application is built using Spring Boot and JavaScript, utilizing WebSocket technology for instant messaging.
