@@ -2,6 +2,32 @@
 
 This is a basic WebSocket chat room application developed by Zain Ahmed, aimed at providing a simple and universally accessible platform for real-time communication over the web. The application is built using Spring Boot and JavaScript, utilizing WebSocket technology for instant messaging.
 
+## Introduction
+
+This chat room application allows users to join a chat room and engage in real-time messaging with other participants. Users can enter a username to start chatting, and their messages will be instantly broadcasted to all participants in the chat room.
+
+## Live Deployment
+
+The live deployment of this application is available and accessible at the following URL:
+
+- [**Live Chat Room**](https://websocket-springboot-production.up.railway.app/)
+
+## Project Structure
+
+The project consists of the following main components:
+
+### Backend
+
+- **WebsocketConnectionApplication.java**: The main Spring Boot application class responsible for running the application.
+- **WebSocketEventListener.java**: Listens for WebSocket events such as user disconnects and broadcasts them to other users.
+- **WebSocketConfig.java**: Configuration class for WebSocket protocol, defining endpoints and message brokers.
+
+### Frontend
+
+- **index.html**: The HTML file defining the structure of the chat room interface.
+- **main.css**: CSS file for styling the user interface.
+- **main.js**: JavaScript file containing client-side logic for WebSocket communication and UI interactions.
+
 ## How to Contribute
 
 If you'd like to contribute to this project, follow these steps:
@@ -29,32 +55,6 @@ You can test the application locally by accessing it through the following URL:
 - [**Localhost**](http://localhost:8080)
 
 Ideally, the application should be running on port 8080. However, if port 8080 is already in use, you can change it to another port by modifying the `application.properties` file and setting `server.port=<yourportnumber>`.
-
-## Live Deployment
-
-The live deployment of this application is available and accessible at the following URL:
-
-- [**Live Chat Room**](https://websocket-springboot-production.up.railway.app/)
-
-## Introduction
-
-This chat room application allows users to join a chat room and engage in real-time messaging with other participants. Users can enter a username to start chatting, and their messages will be instantly broadcasted to all participants in the chat room.
-
-## Project Structure
-
-The project consists of the following main components:
-
-### Backend
-
-- **WebsocketConnectionApplication.java**: The main Spring Boot application class responsible for running the application.
-- **WebSocketEventListener.java**: Listens for WebSocket events such as user disconnects and broadcasts them to other users.
-- **WebSocketConfig.java**: Configuration class for WebSocket protocol, defining endpoints and message brokers.
-
-### Frontend
-
-- **index.html**: The HTML file defining the structure of the chat room interface.
-- **main.css**: CSS file for styling the user interface.
-- **main.js**: JavaScript file containing client-side logic for WebSocket communication and UI interactions.
 
 ## Getting Started
 
