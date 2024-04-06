@@ -1,4 +1,4 @@
-package com.alibou.websocket;
+package com.zainahme.websocket;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
