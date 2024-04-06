@@ -52,8 +52,19 @@ To run the application locally, follow these steps:
 4. Open index.html in a web browser to access the chat room interface.
 5. Enter a username and start chatting with other users in real-time.
 
+### Local Testing
+
+You can also test the application locally by accessing it through the following URL:
+
+- [Localhost](http://localhost:8080)
+
+Ideally, the application should be running on port 8080. However, if port 8080 is already in use, you can change it to another port by modifying the `application.properties` file and setting `server.port=<yourportnumber>`.
+
+
+## Live Deployment
+
+The live deployment of this application is available and accessible at the following URL:
+
+- [Live Chat Room](https://websocket-springboot-production.up.railway.app/)
+
 Feel free to contribute to this project by submitting pull requests or raising issues for enhancements or bug fixes. Happy coding! 🚀
-
---- 
-
-I've standardized the formatting, headings, and sections for better readability and consistency. Let me know if you need further adjustments!
