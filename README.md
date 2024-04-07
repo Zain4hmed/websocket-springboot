@@ -12,6 +12,10 @@ The live deployment of this application is available and accessible at the follo
 
 - [**Live Chat Room**](https://websocket-springboot-production.up.railway.app/)
 
+## Repository
+
+[Android-Chat-Room](https://github.com/your-username/Android-Chat-Room) (Future Integration with WebSocket Chat Room Application Backend)
+
 ## Project Structure
 
 The project consists of the following main components:
