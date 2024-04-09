@@ -5,8 +5,8 @@
     <title>Spring Boot WebSocket Chat Application</title>
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 </head>
 <body style="font-family: 'JetBrains Mono';">
 <noscript>
@@ -49,8 +49,39 @@
     </div>
 </div>
 
+<div id="qr-code-container" class="hidden">
+    <h2>Open/Share the Chat Room with QR Code:</h2>
+    <img id="qr-code" src="" alt="QR Code" />
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 <script src="/js/main.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetchQRCode();
+    });
+
+    function fetchQRCode() {
+        fetch('/qrcode')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const qrCodeImg = document.getElementById('qr-code');
+            qrCodeImg.src = url;
+            document.getElementById('qr-code-container').classList.remove('hidden');
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+    }
+</script>
+
 </body>
 </html>

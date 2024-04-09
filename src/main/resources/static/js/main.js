@@ -116,3 +116,27 @@ function getAvatarColor(messageSender) {
 
 usernameForm.addEventListener('submit', connect, true)
 messageForm.addEventListener('submit', sendMessage, true)
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetchQRCode();
+});
+
+function fetchQRCode() {
+    fetch('/qrcode')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.blob();
+    })
+    .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const qrCodeImg = document.getElementById('qr-code');
+        qrCodeImg.src = url;
+        document.getElementById('qr-code-container').classList.remove('hidden');
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+}
