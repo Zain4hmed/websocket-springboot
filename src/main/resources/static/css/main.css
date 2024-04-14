@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 html,body {
     height: 100%;
     overflow: hidden;
@@ -21,35 +22,39 @@ body {
     height: 100%;
 }
 
-.clearfix:after {
+/*.clearfix:after {
     display: block;
     content: "";
     clear: both;
-}
+}*/
+/*//connecting*/
 
 .hidden {
-    display: none;
+    display: none ;
 }
 
-.form-control {
+
+
+/*.form-control {
     width: 100%;
     min-height: 38px;
     font-size: 15px;
     border: 1px solid #c8c8c8;
-}
+}*/
 
-.form-group {
+/*.form-group {
     margin-bottom: 15px;
-  }
+  }*/
 .form-groups {
     margin-bottom: 15px;
-    margin-left: 70px;
+    margin-left: 50px;
 }
 input {
     padding-left: 10px;
     outline: none;
 }
 
+/*
 h1, h2, h3, h4, h5, h6 {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -58,11 +63,14 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: 1.7em;
 }
+*/
 
+/*
 a {
     color: #6db33f;
 }
-
+*/
+/*
 button {
     box-shadow: none;
     border: 1px solid transparent;
@@ -94,9 +102,8 @@ button.accent {
     background-color: #6db33f;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
     color: #fff;
-}
-
-#username-page {
+}*/
+/*#username-page {
     text-align: center;
 }
 
@@ -118,11 +125,13 @@ button.accent {
     right: 0;
     margin: 0 auto;
     margin-top: -160px;
-}
+}*/
 
+/*
 .username-page-container .username-submit {
     margin-top: 10px;
 }
+*/
 
 
 #chat-page {
@@ -152,16 +161,20 @@ button.accent {
     height: calc(100% - 150px);
 }
 
+/*
 #chat-page #messageForm {
     padding: 20px;
 }
+*/
 
+/*
 #chat-page ul li {
     line-height: 1.5rem;
     padding: 10px 20px;
     margin: 0;
     border-bottom: 1px solid #f4f4f4;
 }
+*/
 
 #chat-page ul li p {
     margin: 0;

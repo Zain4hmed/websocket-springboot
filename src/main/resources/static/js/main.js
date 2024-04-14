@@ -20,7 +20,7 @@ function connect(event) {
     username = document.querySelector('#name').value.trim();
 
     if(username) {
-        usernamePage.classList.add('hidden');
+        usernamePage.classList.add('d-none');
         chatPage.classList.remove('hidden');
 
         var socket = new SockJS('/ws');
