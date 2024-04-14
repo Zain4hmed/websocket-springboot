@@ -40,8 +40,11 @@ body {
 
 .form-group {
     margin-bottom: 15px;
+  }
+.form-groups {
+    margin-bottom: 15px;
+    margin-left: 70px;
 }
-
 input {
     padding-left: 10px;
     outline: none;
@@ -179,6 +182,7 @@ button.accent {
 #chat-page .chat-message {
     padding-left: 68px;
     position: relative;
+    word-wrap: break-word;
 }
 
 #chat-page .chat-message i {
