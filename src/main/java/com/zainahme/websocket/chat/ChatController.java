@@ -4,6 +4,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -17,7 +18,9 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
+@Slf4j
 @Controller
 public class ChatController {
 
@@ -28,6 +31,8 @@ public class ChatController {
     public ChatMessage sendMessage(
             @Payload ChatMessage chatMessage
     ) {
+        chatMessage.setTimestamp(LocalDateTime.now()); // set current time
+        log.info("message : "+chatMessage);
         return chatMessage;
     }
 
@@ -39,6 +44,9 @@ public class ChatController {
     ) {
         // Add username in web socket session
         headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
+        // Set the timestamp for the JOIN message
+        chatMessage.setTimestamp(LocalDateTime.now());
+        log.info(chatMessage.getSender()+" joined at "+chatMessage.getTimestamp());
         return chatMessage;
     }
 

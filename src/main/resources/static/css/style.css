@@ -239,3 +239,14 @@ h6 {
   background: #24b7a4;
   border-color: #24b7a4;
 }
+
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.content-wrapper .time {
+    color: lightgrey;
+    margin-left: auto; /* Push the timestamp to the right */
+}

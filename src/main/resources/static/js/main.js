@@ -69,12 +69,12 @@ function sendMessage(event) {
 
 function onMessageReceived(payload) {
     var message = JSON.parse(payload.body);
-
     var messageElement = document.createElement('li');
 
-    if(message.type === 'JOIN') {
+    if (message.type === 'JOIN') {
         messageElement.classList.add('event-message');
-        message.content = message.sender + ' joined!';
+        var joinText = message.sender + ' joined at ' + new Date(message.timestamp).toLocaleString();
+        message.content = joinText;
     } else if (message.type === 'LEAVE') {
         messageElement.classList.add('event-message');
         message.content = message.sender + ' left!';
@@ -85,13 +85,23 @@ function onMessageReceived(payload) {
         var avatarText = document.createTextNode(message.sender[0]);
         avatarElement.appendChild(avatarText);
         avatarElement.style['background-color'] = getAvatarColor(message.sender);
-
         messageElement.appendChild(avatarElement);
+
+        var contentWrapper = document.createElement('div');
+        contentWrapper.classList.add('content-wrapper');
 
         var usernameElement = document.createElement('span');
         var usernameText = document.createTextNode(message.sender);
         usernameElement.appendChild(usernameText);
-        messageElement.appendChild(usernameElement);
+        contentWrapper.appendChild(usernameElement);
+
+        var timeElement = document.createElement('span');
+        var timeText = document.createTextNode(new Date(message.timestamp).toLocaleTimeString());
+        timeElement.appendChild(timeText);
+        timeElement.classList.add('time');
+        contentWrapper.appendChild(timeElement);
+
+        messageElement.appendChild(contentWrapper);
     }
 
     var textElement = document.createElement('p');
