@@ -19,6 +19,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Slf4j
 @Controller
@@ -31,7 +32,7 @@ public class ChatController {
     public ChatMessage sendMessage(
             @Payload ChatMessage chatMessage
     ) {
-        chatMessage.setTimestamp(LocalDateTime.now()); // set current time
+        chatMessage.setTimestamp(convertToIST(LocalDateTime.now())); // set current time
         log.info("message : "+chatMessage);
         return chatMessage;
     }
@@ -45,7 +46,7 @@ public class ChatController {
         // Add username in web socket session
         headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
         // Set the timestamp for the JOIN message
-        chatMessage.setTimestamp(LocalDateTime.now());
+        chatMessage.setTimestamp(convertToIST(LocalDateTime.now()));
         log.info(chatMessage.getSender()+" joined at "+chatMessage.getTimestamp());
         return chatMessage;
     }
@@ -81,5 +82,10 @@ public class ChatController {
             }
         }
         return image;
+    }
+
+    // Convert LocalDateTime to IST
+    private LocalDateTime convertToIST(LocalDateTime dateTime) {
+        return dateTime.atZone(ZoneId.of("Asia/Kolkata")).toLocalDateTime();
     }
 }
